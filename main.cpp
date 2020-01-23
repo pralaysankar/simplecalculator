@@ -1,9 +1,11 @@
 #include <iostream>
+#include<algorithm>
+#include<cmath>
 using namespace std;
 class calc
 {
     public:
-        float x,y;
+        int x,y;
         calc()
         {
             cout<<"Enter two numbers"<<endl;
@@ -13,7 +15,7 @@ class calc
 class add:public calc
 {
     public:
-        float sum;
+        int sum;
         add()
         {
             sum=x+y;
@@ -23,7 +25,7 @@ class add:public calc
 class subtract:public calc
 {
     public:
-        float diff;
+        int diff;
         subtract()
         {
             diff=x-y;
@@ -33,7 +35,7 @@ class subtract:public calc
 class multiply:public calc
 {
     public:
-        float prod;
+        int prod;
         multiply()
         {
             prod=x*y;
@@ -50,10 +52,54 @@ class division:public calc
             cout<<"Quotient is : "<<quot<<endl;
         }
 };
+class factorial:public calc
+{
+    public:
+        float f1=1,f2=1;
+        factorial()
+        {
+            for(int i=x;i>0;i--)
+            f1=f1*i;
+            for(int j=y;j>0;j--)
+            f2=f2*j;
+            cout<<"Factorial of first number is : "<<f1<<endl;;
+            cout<<"Factorial of second number is : "<<f2<<endl;
+            }
+};
+class HCF_LCM:public calc
+{
+    public:
+        HCF_LCM()
+        {
+            int hcf,lcm;
+            hcf=__gcd(x,y);
+            lcm=x*y/hcf;
+            cout<<"HCF is : "<<hcf<<endl;
+            cout<<"LCM is : "<<lcm<<endl;
+        }
+};
+class root:public calc
+{
+    public:
+        float nroot;
+        root()
+        {
+            nroot=pow(x,1/y);
+            cout<<"second number's root over first number is : "<<nroot<<endl;
+}};
+class power:public calc
+{
+    public:
+        float npow;
+        power()
+        {
+            npow=pow(x,y);
+            cout<<"Second number's power over first number is : "<<npow<<endl;
+}};
 int main()
 {
     char op;
-    cout<<"Enter Operation (+,-,*,/)"<<endl;
+    cout<<"Enter Operation (+,-,*,/,!,$,r,p)"<<endl;
     cin>>op;
     switch(op)
     {
@@ -61,5 +107,9 @@ int main()
         case '-':{subtract obj;break;}
         case '*':{multiply obj;break;}
         case '/':{division obj;break;}
+        case '!':{factorial obj;break;}
+        case '$':{HCF_LCM obj;break;}
+        case 'r':{root obj;break;}
+        case 'p':{power obj;break;}
     }
 }
