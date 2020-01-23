@@ -99,6 +99,9 @@ class power:public calc
 int main()
 {
     char op;
+    int choice=1;
+    while(choice)
+    {
     cout<<"Enter Operation (+,-,*,/,!,$,r,p)"<<endl;
     cin>>op;
     switch(op)
@@ -111,5 +114,8 @@ int main()
         case '$':{HCF_LCM obj;break;}
         case 'r':{root obj;break;}
         case 'p':{power obj;break;}
+    }
+        cout<<"Press 1 to continue/Press 0 to exit";
+        cin>>choice;
     }
 }
